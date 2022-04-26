@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Carros</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet"/>
+</head>
+<body>
+	<div class="container">
+	<div class="row">
+		<h2>Lista de carros</h2>
+		<a th:href="@{/incluir_carro}" class="btn btn-success">Novo carro</a><br>
+		<table class="table table-striped table-condensed">
+			<thead>
+				<th>Marca</th>
+				<th>Modelo</th>
+				<th>Fabricação</th>
+				<th>Valor</th>
+				<th>Ação</th>
+			</thead>
+			<tbody>
+				<tr th:each="carro : ${carros}">
+					<td th:text="${(carro.brand)}"></td>
+					<td th:text="${(carro.model)}"></td>
+					<td th:text="${(carro.vyear)}"></td>
+					<td th:text="${#numbers.formatCurrency(carro.price)}"></td>
+					<td><a th:href="@{/alterar_carro/{id}(id=${carro.id})}"
+						class="btn btn-primary">Editar</a> <a
+						th:href="@{/excluir_carro/{id}(id=${carro.id})}"
+						class="btn btn-danger">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
+</html>

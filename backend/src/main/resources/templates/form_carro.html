@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastrar/alterar carro</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+
+		
+		<form action="#" th:action="@{/processa_form_carro}"
+			th:object="${carro}" method="post">
+			<div class="row mb-4">
+				<div class="col">
+					<label class="form-label">Marca</label>
+					<div class="form-outline">
+						<input type="text" th:field="*{brand}" class="form-control" />
+						<span 
+							th:if="${#fields.hasErrors('brand')}" 
+							th:errors="*{brand}">
+						</span>
+					</div>
+				</div>
+				<div class="col">
+					<label class="form-label">Modelo</label>
+					<div class="form-outline">
+						<input type="text" th:field="*{model}" class="form-control" />
+						<span 
+							th:if="${#fields.hasErrors('model')}" 
+							th:errors="*{model}">
+						</span>
+					</div>
+				</div>
+				<div class="col">
+					<label class="form-label">Ano de fabricação</label>
+					<div class="form-outline">
+						<input type="text" th:field="*{vyear}" class="form-control" />
+						<span th:if="${#fields.hasErrors('vyear')}" th:errors="*{vyear}"></span>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<label class="form-label">Valor</label>
+				<div class="form-outline mb-4">
+					<input type="text" th:field="*{price}" class="form-control" />
+					<span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+				</div>
+			</div>
+			<div class="col">
+				<label class="form-label">Foto</label>
+				<div class="form-outline mb-4">
+					<input type="file" th:field="*{photo}" class="form-control" />
+					<span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
+				</div>
+			</div>
+			<a th:href="@{/carros}" class="btn btn-dark btn-block mb-4">Voltar</a>
+			<button type="submit" class="btn btn-success btn-block mb-4">Salvar</button>
+		</form>
+	</div>
+</body>
+</html>

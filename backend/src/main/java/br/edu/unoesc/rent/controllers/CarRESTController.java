@@ -27,7 +27,6 @@ import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
 import br.edu.unoesc.rent.dto.CarDTO;
 import br.edu.unoesc.rent.entities.Car;
-import br.edu.unoesc.rent.entities.CarBrand;
 import br.edu.unoesc.rent.repositories.CarRepository;
 import br.edu.unoesc.rent.services.CarService;
 
