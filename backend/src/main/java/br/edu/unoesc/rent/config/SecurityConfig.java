@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -28,8 +31,36 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		}
 		http.cors().and().csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		http.authorizeRequests().anyRequest().permitAll();
+		//http.authorizeRequests().anyRequest().permitAll();
 		http.headers().frameOptions().disable();
+        http
+	        .csrf().disable()
+	        .authorizeRequests()
+		        .antMatchers("/admin/**").hasRole("ADMIN")
+		        .antMatchers("/anonymous*").anonymous()
+		        .antMatchers("/login*", "/**").permitAll()
+		        .anyRequest().authenticated()
+	        .and()
+		        .formLogin()
+			        .loginPage("/login.html")
+			        .loginProcessingUrl("/perform_login")
+			        .defaultSuccessUrl("/home.html", true)
+	        .and()
+		        .logout()
+			        .logoutUrl("/perform_logout")
+			        .deleteCookies("JSESSIONID");
+	}
+	
+	protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+	    auth.inMemoryAuthentication()
+	        .withUser("user").password(passwordEncoder().encode("user")).roles("USER")
+	        .and()
+	        .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN");
+	}
+	
+	@Bean 
+	public PasswordEncoder passwordEncoder() { 
+	    return new BCryptPasswordEncoder(); 
 	}
 
 	@Bean

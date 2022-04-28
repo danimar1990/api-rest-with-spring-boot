@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title th:text="${insert} ? 'RentCar - New car' : 'RentCar - Editing car'"></title>
+		<link th:href="@{/img/favicon.ico}" type="image/x-icon">
+		<link th:href="@{/css/mdb.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/google-fonts.min.css}" rel="stylesheet" />
+	</head>
+	<body>
+		<header th:replace="~{fragments :: header}"></header>
+		<main>
+			<div class="container pt-4">
+				<section class="mb-4">
+					<div class="card">
+						<div class="card-header text-center py-3">
+							<h1 class="mb-0 text-center">
+								<strong th:text="${insert} ? 'New car' : 'Editing car'"></strong>
+							</h1>
+						</div>
+						<div class="card-body">
+							<form id="form" action="#" th:action="${insert} ? @{insert} : @{{id}(id=${car.id})}" th:object="${car}" method="POST">
+								<div class="row mb-4">
+									<div class="col">
+										<div class="form-outline mb-4">
+											<input type="text" th:field="*{brand}" class="form-control form-control-lg" />
+											<label class="form-label">Brand</label>
+											<span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></span>
+										</div>
+									</div>
+									<div class="col">
+										<div class="form-outline mb-4">
+											<input type="text" th:field="*{model}" class="form-control form-control-lg" />
+											<label class="form-label">Model</label>
+											<span th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></span>
+										</div>
+									</div>
+									<div class="col">
+										<div class="form-outline mb-4">
+											<input type="text" th:field="*{vyear}" class="form-control form-control-lg" />
+											<label class="form-label">Year</label>
+											<span th:if="${#fields.hasErrors('vyear')}" th:errors="*{vyear}"></span>
+										</div>
+									</div>
+								</div>
+								<div class="row mb-4">
+									<div class="col">
+										<div class="form-outline mb-4">
+											<input type="text" th:field="*{price}" class="form-control form-control-lg" />
+											<label class="form-label">Price</label>
+											<span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+										</div>
+									</div>
+									<div class="col">
+										<div class="form-outline mb-4">
+											<input type="file" th:field="*{photo}" class="form-control form-control-lg" />
+											<span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
+										</div>
+									</div>
+								</div>
+								<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+									<li class="nav-item" role="presentation">
+										<a class="nav-link" th:href="@{/cars}">Cancel</a>
+									</li>
+									<li class="nav-item" role="presentation">
+										<a href="javascript:void(0);" class="nav-link active" onClick="document.getElementById('form').submit();">Save</a>
+									</li>
+								</ul>
+							</form>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+		<footer th:replace="~{fragments :: footer}"></footer>
+	</body>
+	<script type="text/javascript" th:src="@{/js/mdb.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/font-awesome.min.js}"></script>
+</html>

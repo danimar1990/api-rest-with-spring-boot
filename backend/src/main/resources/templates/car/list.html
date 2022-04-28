@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title th:text="${insert} ? 'RentCar - New car' : 'RentCar - Editing car'"></title>
+		<link th:href="@{/img/favicon.ico}" type="image/x-icon">
+		<link th:href="@{/css/mdb.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/google-fonts.min.css}" rel="stylesheet" />
+	</head>
+	<body>
+		<header th:replace="~{fragments :: header}"></header>
+		<main>
+			<div class="container pt-4">
+				<section class="mb-4">
+					<div class="card">
+						<div class="card-header text-center py-3">
+							<h1 class="mb-0 text-center">
+								<strong>List of cars</strong>
+							</h1>
+							<hr>
+							<a th:href="@{/car/new}" class="btn btn-warning">Add new car</a>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-hover text-nowrap">
+									<thead>
+										<th>Brand</th>
+										<th>Model</th>
+										<th>Year</th>
+										<th>Price</th>
+										<th width="20px">Action</th>
+									</thead>
+									<tbody>
+										<tr th:each="car : ${cars}">
+											<td th:text="${(car.brand)}"></td>
+											<td th:text="${(car.model)}"></td>
+											<td th:text="${(car.vyear)}"></td>
+											<td th:text="${#numbers.formatCurrency(car.price)}"></td>
+											<td><a th:href="@{/car/update/{id}(id=${car.id})}"
+												class="btn btn-primary">Edit</a> <a
+												th:href="@{/car/delete/{id}(id=${car.id})}"
+												class="btn btn-danger">Delete</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+		<footer th:replace="~{fragments :: footer}"></footer>
+	</body>
+	<script type="text/javascript" th:src="@{/js/mdb.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/font-awesome.min.js}"></script>
+</html>

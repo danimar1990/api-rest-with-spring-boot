@@ -42,6 +42,11 @@ public class CarRESTController {
 	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws ServletException {
 		binder.registerCustomEditor(byte[].class, new ByteArrayMultipartFileEditor());
 	}
+	
+	@GetMapping(value = "/")
+	public String showForm() {
+		return "/index";
+	}
 
 	@GetMapping(value = "/cars")
 	public Page<CarDTO> findAll(Pageable pageable) {

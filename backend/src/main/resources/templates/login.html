@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>RentCar - Login</title>
+	<link th:href="@{/img/favicon.ico}" type="image/x-icon">
+	<link th:href="@{/css/mdb.min.css}" rel="stylesheet" />
+	<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
+	<link th:href="@{/css/google-fonts.min.css}" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+		<section class="vh-100">
+			<div class="container py-5 h-100">
+				<h2 class="row d-flex align-items-center justify-content-center">SPRING SECURE API - LOGIN</h2>
+				<div class="row d-flex align-items-center justify-content-center h-100">
+					<div class="col-md-8 col-lg-7 col-xl-6">
+						<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid" alt="Phone image">
+					</div>
+					<div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+						<form name='f' action="login" method='POST'>
+							<div class="form-outline mb-4">
+								<input type="text" name="username" id="username" value="admin" class="form-control form-control-lg" />
+								<label class="form-label" for="username">Usuário</label>
+							</div>
+							<div class="form-outline mb-4">
+								<input type="password" name="password" id="password" value="admin" class="form-control form-control-lg" />
+								<label class="form-label" for="password">Senha</label>
+							</div>
+							<button type="submit" class="btn btn-primary btn-lg btn-block">Entrar</button>
+							<hr>
+							<div class="divider d-flex align-items-center">
+								<p class="fw-bold mx-3 mb-0 text-muted">DADOS DE ACESSO</p>
+							</div>
+							<div class="divider d-flex align-items-center">
+								<p class="mx-3 mb-0 text-muted">Usuário: admin</p>
+							</div>
+							<div class="divider d-flex align-items-center">
+								<p class="mx-3 mb-0 text-muted">Senha: admin</p>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+<script type="text/javascript" th:src="@{/js/mdb.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/font-awesome.min.js}"></script>
+</html>

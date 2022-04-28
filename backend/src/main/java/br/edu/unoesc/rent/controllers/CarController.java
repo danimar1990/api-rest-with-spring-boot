@@ -14,69 +14,72 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.edu.unoesc.rent.entities.Car;
 import br.edu.unoesc.rent.repositories.CarRepository;
 
 @Controller
 @CrossOrigin(origins = "*")
+@RequestMapping("/")
 public class CarController {
+
 	@Autowired
 	CarRepository carRepository;
 
-	@GetMapping("/carros")
-	public String listarCarros(Model model) {
+	@GetMapping("/cars")
+	public String list(Model model) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat();
-		Calendar cal = Calendar.getInstance();
-		String sDataAux;
+		Calendar calendar = Calendar.getInstance();
+		String dataFormatada;
 		dateFormat.applyPattern("dd 'de' MMMM 'de' yyyy");
-		sDataAux = dateFormat.format(cal.getTime());
+		dataFormatada = dateFormat.format(calendar.getTime());
 		model.addAttribute("data", LocalDateTime.now());
-		model.addAttribute("dataExtenso", "<b>" + sDataAux + "</b>");
-		model.addAttribute("carros", carRepository.findAll());
-		return "lista_carros";
+		model.addAttribute("dataExtenso", "<b>" + dataFormatada + "</b>");
+		model.addAttribute("cars", carRepository.findAll());
+		return "car/list";
 	}
 
-	@GetMapping("/incluir_carro")
-	public String formCarro(Model model) {
+	@GetMapping("/car/new")
+	public String insert(Model model) {
 		model.addAttribute("car", new Car());
-		model.addAttribute("adicionar", true);
-		return "form_carro";
+		model.addAttribute("insert", true);
+		return "car/form";
 	}
-
-	@PostMapping("/processa_incluir_carro")
-	public String processaFormIncluirCarro(@Valid Car car, BindingResult resultado) {
-		if (resultado.hasErrors()) {
-			return "form_carro";
-		}
-		carRepository.save(car);
-		return "redirect:/carros";
-	}
-
-	@GetMapping("/alterar_carro/{id}")
-	public String alterar(@PathVariable("id") long id, Model model) {
+	
+	@GetMapping("/car/update/{id}")
+	public String update(@PathVariable("id") long id, Model model) {
 		Car car = carRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("ID do carro inválido: " + id));
-		model.addAttribute("carro", car);
-		model.addAttribute("adicionar", false);
-		return "form_carro";
+		model.addAttribute("car", car);
+		model.addAttribute("insert", false);
+		return "car/form";
 	}
 
-	@PostMapping("/processa_alterar_carro/{id}")
-	public String processaFormAlterarCarro(@PathVariable("id") long id, @Valid Car car, BindingResult resultado,
+	@PostMapping("/car/insert")
+	public String insertCar(@Valid Car car, BindingResult resultado) {
+		if (resultado.hasErrors()) {
+			return "car/form";
+		}
+		carRepository.save(car);
+		return "redirect:/cars";
+	}
+
+	@PostMapping("/car/update/{id}")
+	public String updateCar(@PathVariable("id") long id, @Valid Car car, BindingResult resultado,
 			Model model) {
 		if (resultado.hasErrors()) {
 			car.setId(id);
-			return "form_carro";
+			return "form";
 		}
 		carRepository.save(car);
-		return "redirect:/carros";
+		return "redirect:/cars";
 	}
 
-	@GetMapping("/excluir_carro/{id}")
-	public String remover(@PathVariable("id") long id, Model model) {
+	@GetMapping("/car/delete/{id}")
+	public String delete(@PathVariable("id") long id, Model model) {
 		Car car = carRepository.findById(id).get();
 		carRepository.delete(car);
-		return "redirect:/carros";
+		return "redirect:/cars";
 	}
 }
