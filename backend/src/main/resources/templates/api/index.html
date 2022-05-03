@@ -2,7 +2,11 @@
 <html lang="pt-BR" xmlns:th="https://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
+<<<<<<< HEAD
 		<title>RentCar - API Rest</title>
+=======
+		<title th:text="${insert} ? 'RentCar - New car' : 'RentCar - Editing car'"></title>
+>>>>>>> 02c77975d692d6960e72b23c6ac1020e7c1d45eb
 		<link th:href="@{/img/favicon.ico}" type="image/x-icon">
 		<link th:href="@{/css/mdb.min.css}" rel="stylesheet" />
 		<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
@@ -15,16 +19,21 @@
 				<section class="mb-4">
 					<div class="card">
 						<div class="card-body">
+<<<<<<< HEAD
 							<h1 class="mb-5 text-center">How to use this API</h1>
 							<div class="mb-5 text-center">
 								<a th:href="@{/files/Heroku API.postman_collection.json}" class="btn btn-primary btn-lg">Download Postman Json</a>
 							</div>
+=======
+							<h1 class="mb-0 text-center">How to use this API</h1>
+>>>>>>> 02c77975d692d6960e72b23c6ac1020e7c1d45eb
 							<hr>
 							<p class="lead">To connect in the API, you need authenticate with token:</p>
 							<p class="note note-warning">
 								<strong>Verb: </strong>POST<br><strong>Method: </strong>authenticate<br><strong>URL: </strong><code>https://dm-api-rest-with-spring-boot.herokuapp.com/api/authenticate</code>
 							</p>
 							<hr>
+<<<<<<< HEAD
 							<p class="lead">Get car list:</p>
 							<p class="note note-success">
 								<strong>Verb: </strong>GET<br><strong>Method: </strong>getCars<br><strong>URL: </strong><code>https://dm-api-rest-with-spring-boot.herokuapp.com/api/cars</code>
@@ -48,11 +57,35 @@
 							<p class="lead">Update car:</p>
 							<p class="note note-info">
 								<strong>Verb: </strong>PUT<br><strong>Method: </strong>updateCar<br><strong>URL: </strong><code>https://dm-api-rest-with-spring-boot.herokuapp.com/api/car/update/{id}</code>
+=======
+							<p class="lead">To get a car list:</p>
+							<p class="note note-success">
+								<strong>Verb: </strong>GET<br><strong>Method: </strong>getCars<br><strong>URL: </strong><code>https://dm-api-rest-with-spring-boot.herokuapp.com/api/cars/</code>
+							</p>
+							<hr>
+							<p class="lead">To get a car by id:</p>
+							<p class="note note-success">
+								<strong>Verb: </strong>GET<br><strong>Method: </strong>getCar<br><strong>URL: </strong><code>https://dm-api-rest-with-spring-boot.herokuapp.com/api/cars/get/1</code>
+							</p>
+							<hr>
+							<p class="lead">To create a new car:</p>
+							<p class="note note-warning">
+								<strong>Verb: </strong>POST<br><strong>Method: </strong>createCar<br><strong>URL: </strong><code>https://dm-api-rest-with-spring-boot.herokuapp.com/api/cars/create</code>
+							</p>
+							<hr>
+							<p class="lead">To update a car:</p>
+							<p class="note note-info">
+								<strong>Verb: </strong>PUT<br><strong>Method: </strong>updateCar<br><strong>URL: </strong><code>https://dm-api-rest-with-spring-boot.herokuapp.com/api/cars/update/1</code>
+>>>>>>> 02c77975d692d6960e72b23c6ac1020e7c1d45eb
 							</p>
 							<hr>
 							<p class="lead">To delete a car:</p>
 							<p class="note note-danger">
+<<<<<<< HEAD
 								<strong>Verb: </strong>DELETE<br><strong>Method: </strong>deleteCar<br><strong>URL: </strong><code>https://dm-api-rest-with-spring-boot.herokuapp.com/api/car/delete/{id}</code>
+=======
+								<strong>Verb: </strong>DELETE<br><strong>Method: </strong>deleteCar<br><strong>URL: </strong><code>https://dm-api-rest-with-spring-boot.herokuapp.com/api/cars/delete/1</code>
+>>>>>>> 02c77975d692d6960e72b23c6ac1020e7c1d45eb
 							</p>
 						</div>
 						<div class="card-footer text-center py-3">

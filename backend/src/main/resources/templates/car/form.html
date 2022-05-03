@@ -20,6 +20,7 @@
 							</h1>
 						</div>
 						<div class="card-body">
+<<<<<<< HEAD
 							<form id="form" th:action="${insert} ? @{insert} : @{{id}(id=${car.id})}" th:object="${car}" method="POST">
 								<div class="row mb-4">
 									<div class="col">
@@ -41,20 +42,54 @@
 										<div class="form-outline mb-4">
 											<input type="text" th:field="*{vyear}" class="form-control form-control-lg" th:required="required" />
 											<label class="form-label">Year</label>
+=======
+							<form id="form" action="#" th:action="${insert} ? @{insert} : @{{id}(id=${car.id})}" th:object="${car}" method="POST">
+								<div class="row mb-4">
+									<div class="col">
+										<div class="form-outline mb-4">
+											<input type="text" th:field="*{brand}" class="form-control form-control-lg" />
+											<label class="form-label">Brand</label>
+											<span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></span>
+										</div>
+									</div>
+									<div class="col">
+										<div class="form-outline mb-4">
+											<input type="text" th:field="*{model}" class="form-control form-control-lg" />
+											<label class="form-label">Model</label>
+											<span th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></span>
+										</div>
+									</div>
+									<div class="col">
+										<div class="form-outline mb-4">
+											<input type="text" th:field="*{vyear}" class="form-control form-control-lg" />
+											<label class="form-label">Year</label>
+											<span th:if="${#fields.hasErrors('vyear')}" th:errors="*{vyear}"></span>
+>>>>>>> 02c77975d692d6960e72b23c6ac1020e7c1d45eb
 										</div>
 									</div>
 								</div>
 								<div class="row mb-4">
 									<div class="col">
+<<<<<<< HEAD
 										<span class="badge rounded-pill badge-warning" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
 										<div class="form-outline mb-4">
 											<input type="text" th:field="*{price}" class="form-control form-control-lg" th:required="required" />
 											<label class="form-label">Price</label>
+=======
+										<div class="form-outline mb-4">
+											<input type="text" th:field="*{price}" class="form-control form-control-lg" />
+											<label class="form-label">Price</label>
+											<span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+>>>>>>> 02c77975d692d6960e72b23c6ac1020e7c1d45eb
 										</div>
 									</div>
 									<div class="col">
 										<div class="form-outline mb-4">
 											<input type="file" th:field="*{photo}" class="form-control form-control-lg" />
+<<<<<<< HEAD
+=======
+											<span th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></span>
+>>>>>>> 02c77975d692d6960e72b23c6ac1020e7c1d45eb
 										</div>
 									</div>
 								</div>

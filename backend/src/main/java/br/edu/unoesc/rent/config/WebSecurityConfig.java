@@ -49,7 +49,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable();
 
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
 		http.headers().frameOptions().disable();
 
 		http
@@ -61,12 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.formLogin()
 			.loginPage("/login")
 			.usernameParameter("usuario")
-			.passwordParameter("senha")
-			.defaultSuccessUrl("/").permitAll()
-			.and()
-			.logout().permitAll()
-			.and()
-		      .httpBasic();
+			.passwordParameter("senha");
 	}
 
 	@Bean
