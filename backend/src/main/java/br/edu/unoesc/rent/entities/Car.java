@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 
@@ -20,9 +22,17 @@ public class Car {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotEmpty(message = "Brand is mandatory")
 	private String brand;
+	
+	@NotEmpty(message = "Model is mandatory")
 	private String model;
+	
+	@NotNull(message = "Year is mandatory")
 	private Integer vyear;
+	
+	@NotNull(message = "Price is mandatory")
 	private Float price;
 	@Column(name = "photo", nullable = true)
 	@Lob

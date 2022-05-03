@@ -1,6 +1,5 @@
 package br.edu.unoesc.rent.controllers;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -20,14 +19,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
 import br.edu.unoesc.rent.dto.CarDTO;
 import br.edu.unoesc.rent.entities.Car;
-import br.edu.unoesc.rent.entities.CarBrand;
 import br.edu.unoesc.rent.repositories.CarRepository;
 import br.edu.unoesc.rent.services.CarService;
 
@@ -49,49 +45,39 @@ public class CarRESTController {
 		return carService.findAll(pageable);
 	}
 
-	@GetMapping(value = "/car/{id}")
+	@GetMapping(value = "/car/get/{id}")
 	public CarDTO findById(@PathVariable Long id) {
 		return carService.findById(id);
 	}
 
-	@PostMapping(value = "/car/save")
-	public Car saveCar(@RequestParam String brand, @RequestParam String model, @RequestParam Integer vyear,
-			@RequestParam Float price, @RequestParam MultipartFile photo) throws IOException {
-
-		byte[] photo2 = photo.getBytes();
-		Car car = new Car();
-		car.setModel(model);
-		car.setBrand(brand);
-		car.setVyear(vyear);
-		car.setPrice(price);
-		car.setPhoto(photo2);
-
+	@PostMapping("/car/create")
+	public Car createCar(@RequestBody Car car) {
 		return carRepository.save(car);
 	}
 
-	@PutMapping(value = "/car/{id}/update")
-	public Car updateCar(@RequestBody Car upCar, @PathVariable Long id) {
+	@PutMapping(value = "/car/update/{id}")
+	public Car updateCar(@RequestBody Car updtCar, @PathVariable Long id) {
 		return carRepository.findById(id).map(car -> {
-			car.setBrand(upCar.getBrand());
-			car.setModel(upCar.getModel());
-			car.setVyear(upCar.getVyear());
-			car.setPrice(upCar.getPrice());
-			car.setPhoto(upCar.getPhoto());
+			car.setBrand(updtCar.getBrand());
+			car.setModel(updtCar.getModel());
+			car.setVyear(updtCar.getVyear());
+			car.setPrice(updtCar.getPrice());
+			//car.setPhoto(updtCar.getPhoto());
 			return carRepository.save(car);
 		}).orElseGet(() -> {
-			upCar.setId(id);
-			return carRepository.save(upCar);
+			updtCar.setId(id);
+			return carRepository.save(updtCar);
 		});
 	}
 
-	@DeleteMapping(value = "/car/{id}/delete")
+	@DeleteMapping(value = "/car/delete/{id}")
 	public ResponseEntity<String> deleteCar(@PathVariable Long id) {
 		carRepository.deleteById(id);
 		return new ResponseEntity<>("Car deleted", HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/cars/brand/{brand}")
-	public List<Car> listByBrand(@PathVariable String brand) {
+	public List<Car> getCarsByBrand(@PathVariable String brand) {
 		return carRepository.getByBrand(brand);
 	}
 

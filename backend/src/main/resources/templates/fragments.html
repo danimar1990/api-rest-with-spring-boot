@@ -1,0 +1,101 @@
+		<header th:fragment="header">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container-fluid">
+					<button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<i class="fas fa-bars"></i>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<a class="navbar-brand mt-2 mt-lg-0" th:href="@{/}">
+						<img th:src="@{/img/logo.png}" height="40" loading="lazy"/>
+						</a>
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/}"><i class="fa-solid fa-shop"></i> Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/cars}"><i class="fa-solid fa-car"></i> Cars</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/api}"><i class="fa-solid fa-code"></i> API</a>
+							</li>
+						</ul>
+					</div>
+					<div class="d-flex align-items-center">
+						<div class="dropdown">
+							<a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="javascript:void(0);" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+							<img th:src="@{/img/avatar.jpg}" class="rounded-circle" height="30" loading="lazy"/>
+							&nbsp;Danimar&nbsp; <i class="fa fa-caret-down"></i>
+							</a>
+							<ul
+								class="dropdown-menu dropdown-menu-end"
+								aria-labelledby="navbarDropdownMenuAvatar"
+								>
+								<li>
+									<a class="dropdown-item" th:href="@{/profile}">My profile</a>
+								</li>
+								<li>
+									<a class="dropdown-item" th:href="@{/logout}">Logout</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<footer th:fragment="footer" class="text-center text-lg-start bg-light text-muted">
+			<section class="d-flex"></section>
+			<section class="">
+				<div class="container text-center text-md-start mt-5">
+					<div class="row mt-3">
+						<div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+							<h6 class="text-uppercase fw-bold mb-4">
+								<i class="fas fa-gem me-3"></i>ADS 2022
+							</h6>
+							<p>
+								Here you can use rows and columns to organize your footer content. Lorem ipsum
+								dolor sit amet, consectetur adipisicing elit.
+							</p>
+							<div class="me-5 d-none d-lg-block">
+								<span>Get this project in Github repository:</span>
+							</div>
+							<div>
+								<a href="https://github.com/danimar1990/api-rest-with-spring-boot" class="me-4 text-reset">
+									<i class="fab fa-github"></i>
+								</a>
+							</div>
+						</div>
+						<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+							<h6 class="text-uppercase fw-bold mb-4">
+								Menu links
+							</h6>
+							<p>
+								<a th:href="@{/}" class="text-reset">Home</a>
+							</p>
+							<p>
+								<a th:href="@{/cars}" class="text-reset">Cars</a>
+							</p>
+							<p>
+								<a th:href="@{/api}" class="text-reset">API</a>
+							</p>
+							<p>
+								<a th:href="@{/contact}" class="text-reset">Contact</a>
+							</p>
+						</div>
+						<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+							<h6 class="text-uppercase fw-bold mb-4">
+								Contact
+							</h6>
+							<p><i class="fas fa-envelope"></i> danimarvarisa@gmail.com</p>
+							<p><i class="fas fa-envelope"></i> michael@michaeltimbola.com.br</p>
+							<p><i class="fa-brands fa-whatsapp"></i> (49) 99999-0733</p>
+							<p><i class="fa-brands fa-whatsapp"></i> (49) 99991-4873</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+				© 2021 Copyright: ADS 2022. Constructed with 
+				<a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+			</div>
+		</footer>

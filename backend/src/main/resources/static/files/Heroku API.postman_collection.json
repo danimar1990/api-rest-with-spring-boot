@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "546aa69c-d138-472f-88e8-49e21f0208f2",
+		"name": "Heroku API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "authenticate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.environment.set(\"jwtToken\", response.jwtToken)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dm-api-rest-with-spring-boot.herokuapp.com/api/authenticate",
+					"protocol": "https",
+					"host": [
+						"dm-api-rest-with-spring-boot",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCars",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dm-api-rest-with-spring-boot.herokuapp.com/api/cars",
+					"protocol": "https",
+					"host": [
+						"dm-api-rest-with-spring-boot",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dm-api-rest-with-spring-boot.herokuapp.com/api/car/get/1",
+					"protocol": "https",
+					"host": [
+						"dm-api-rest-with-spring-boot",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"car",
+						"get",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCarsByBrand",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dm-api-rest-with-spring-boot.herokuapp.com/api/cars/brand/Ferrari",
+					"protocol": "https",
+					"host": [
+						"dm-api-rest-with-spring-boot",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"cars",
+						"brand",
+						"Ferrari"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"brand\": \"Ferrari\",\r\n    \"model\": \"SF 90 STRADALE\",\r\n    \"vyear\": 2022,\r\n    \"price\": 7406252.0,\r\n    \"photo\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dm-api-rest-with-spring-boot.herokuapp.com/api/car/create",
+					"protocol": "https",
+					"host": [
+						"dm-api-rest-with-spring-boot",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"car",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateCar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"brand\": \"Ferrari\",\r\n        \"model\": \"SF 90 Stradale\",\r\n        \"vyear\": 2022,\r\n        \"price\": 7406252.0\r\n    }"
+				},
+				"url": {
+					"raw": "https://dm-api-rest-with-spring-boot.herokuapp.com/api/car/update/20",
+					"protocol": "https",
+					"host": [
+						"dm-api-rest-with-spring-boot",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"car",
+						"update",
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCar",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "hhttps://dm-api-rest-with-spring-boot.herokuapp.com/api/car/delete/18",
+					"protocol": "hhttps",
+					"host": [
+						"dm-api-rest-with-spring-boot",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"car",
+						"delete",
+						"18"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

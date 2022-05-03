@@ -3,3 +3,12 @@ INSERT INTO CARS(brand, model, vyear, price, photo) VALUES('Porsche', '911 Carre
 INSERT INTO CARS(brand, model, vyear, price, photo) VALUES('Mercedes-Benz', 'AMG GT Black Series', 2022, 2314782, null);
 INSERT INTO CARS(brand, model, vyear, price, photo) VALUES('Lamborghini', 'Huracán', 2022, 5104300, null);
 INSERT INTO CARS(brand, model, vyear, price, photo) VALUES('Ferrari', 'SF 90 Spider', 2022, 8400000, null);
+INSERT INTO CARS(brand, model, vyear, price, photo) VALUES('BMW', 'M8 Gran Coupé Competition', 2022, 1320950, null);
+INSERT INTO CARS(brand, model, vyear, price, photo) VALUES('Aston Martin', 'Vantage S', 2022, 1100089.50, null);
+INSERT INTO CARS(brand, model, vyear, price, photo) VALUES('Rolls-Royce', 'Cullinan Black Badge', 2022, 7706492, null);
+INSERT INTO CARS(brand, model, vyear, price, photo) VALUES('Maserati', 'Levante Trofeo', 2022, 2799895, null);
+INSERT INTO CARS(brand, model, vyear, price, photo) VALUES('Land Rover', 'Range Rover Sport SVR SUPERCHA', 2022, 1051076, null);
+INSERT INTO CARS(brand, model, vyear, price, photo) VALUES('Nissan', 'GTR50 Special Edition', 2022, 4000000, null);
+INSERT INTO CARS(brand, model, vyear, price, photo) VALUES('Wolkswagen', 'Fuque 1600', 1975, 100000, null);
+INSERT INTO CARS(brand, model, vyear, price, photo) VALUES('Ferrari', '"458 Spider"', 2015, 2786278, null);
+INSERT INTO CARS(brand, model, vyear, price, photo) VALUES('Ferrari', '"SF 90 STRADALE"', 2022, 7406252, null);

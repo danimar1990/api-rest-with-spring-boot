@@ -11,7 +11,9 @@ public class CarDTO {
 	private Float price;
 	private byte[] photo;
 	
-	public CarDTO() {}
+	public CarDTO() {
+		
+	}
 
 	public CarDTO(Long id, String brand, String model, Integer vyear, Float price, byte[] photo) {
 		super();
