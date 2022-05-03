@@ -25,6 +25,7 @@ Bancos de dados:<br>
 Ferramentas:<br>
 * Spring Tool Suite
 * VSCode
+* Postman
 * H2 Console
 * MySQL Workbench
 * PGAdmin
@@ -33,25 +34,39 @@ Ferramentas:<br>
 
 ## Sistema:
 
-https://dm-api-rest-with-spring-boot.herokuapp.com/
-https://dm-api-rest-with-spring-boot.vercel.app/
+https://dm-api-rest-with-spring-boot.herokuapp.com/login
 
-## Lista de carros
+## List all cars
 
 https://dm-api-rest-with-spring-boot.herokuapp.com/api/cars
-https://dm-api-rest-with-spring-boot.vercel.app/api/cars
 
-## Buscar carro pelo código
+## Search car by id
 
-https://dm-api-rest-with-spring-boot.herokuapp.com/api/car/{id}
-https://dm-api-rest-with-spring-boot.vercel.app/car/{id}
+https://dm-api-rest-with-spring-boot.herokuapp.com/api/car/get/{id}
 
-## Listar carros por marca
+## List car by brand
 
-https://dm-api-rest-with-spring-boot.herokuapp.com/api/cars/brand/{brand-name-here}
-https://dm-api-rest-with-spring-boot.vercel.app/brand/{brand-name-here}
+https://dm-api-rest-with-spring-boot.herokuapp.com/api/cars/brand/{brand-name}
 
-## Criar novo carro
+## Insert new car
+
+Body
+
+```json
+{
+    "brand": "Ferrari",
+    "model": "458 Italia",
+    "vyear": 2022,
+    "price": 1171568.0,
+    "photo": ""
+}
+```
+
+https://dm-api-rest-with-spring-boot.herokuapp.com/api/car/create
+
+## Update car
+
+https://dm-api-rest-with-spring-boot.herokuapp.com/api/car/update/{id}
 
 Body
 
@@ -62,25 +77,6 @@ Body
   "photo": null
 }
 ```
+## Delete car
 
-https://dm-api-rest-with-spring-boot.herokuapp.com/api/car/save
-https://dm-api-rest-with-spring-boot.vercel.app/car/save
-
-## Atualizar carro
-
-https://dm-api-rest-with-spring-boot.herokuapp.com/api/car/{id}/update
-https://dm-api-rest-with-spring-boot.vercel.app/car/{id}/update
-
-Body
-
-```json
-{
-  "model": "MG GT Black Series",
-  "brand": "Mercedes-Benz",
-  "photo": null
-}
-```
-## Excluir carro
-
-https://dm-api-rest-with-spring-boot.herokuapp.com/api/car/{id}/delete
-https://dm-api-rest-with-spring-boot.vercel.app/{id}/delete
+https://dm-api-rest-with-spring-boot.herokuapp.com/api/car/delete/{id}
