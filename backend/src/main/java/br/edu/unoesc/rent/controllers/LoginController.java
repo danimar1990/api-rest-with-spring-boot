@@ -1,5 +1,6 @@
 package br.edu.unoesc.rent.controllers;
 
+<<<<<<< HEAD
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,3 +51,19 @@ public class LoginController {
 	}
 
 }
+=======
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/")
+public class LoginController {
+
+	@GetMapping("/login")
+	public String showForm() {
+		return "login";
+	}
+
+}
+>>>>>>> 02c77975d692d6960e72b23c6ac1020e7c1d45eb
