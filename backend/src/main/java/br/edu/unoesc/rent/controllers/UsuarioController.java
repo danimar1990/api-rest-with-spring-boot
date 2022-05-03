@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.unoesc.rent.dto.UsuarioDTO;
+import br.edu.unoesc.rent.entities.Car;
 import br.edu.unoesc.rent.entities.Perfil;
 import br.edu.unoesc.rent.entities.Usuario;
 import br.edu.unoesc.rent.repositories.PerfilRepository;
@@ -24,7 +25,6 @@ import br.edu.unoesc.rent.repositories.UsuarioRepository;
 import br.edu.unoesc.rent.services.UsuarioService;
 
 @Controller
-@RequestMapping("user")
 public class UsuarioController {
 
 	@Autowired
@@ -35,16 +35,24 @@ public class UsuarioController {
 
 	@Autowired
 	UsuarioService usuarioService;
+	
+	@GetMapping("/users")
+	public String list(Model model) {
+		List<Usuario> users = userRepository.findAll();
+		model.addAttribute("users", users);
+		return "user/list";
+	}
 
-	@GetMapping("new")
-	public String user_cad(UsuarioDTO userDTO, Model model, BindingResult result) {
-		List<Perfil> listaPerfils = perfilRepository.findAll();
-
-		model.addAttribute("listaPerfils", listaPerfils);
+	@GetMapping("/user/new")
+	public String insert(Model model, UsuarioDTO userDTO, BindingResult result) {
+		List<Perfil> perfils = perfilRepository.findAll();
+		model.addAttribute("perfils", perfils);
+		model.addAttribute("user", new Car());
+		model.addAttribute("insert", true);
 		return "user/form";
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("user/edit/{id}")
 	public String user_cad_edicao(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) {
 		redirectAttributes.addFlashAttribute("message", "Error registering user!");
 		redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
@@ -54,7 +62,7 @@ public class UsuarioController {
 		model.addAttribute("listaPerfils", listaPerfils);
 		redirectAttributes.addFlashAttribute("message", "User successfully changed!");
 		redirectAttributes.addFlashAttribute("alertClass", "alert-success");
-		return "/user/form";
+		return "user/form";
 	}
 
 	@PostMapping("/create")
@@ -92,22 +100,15 @@ public class UsuarioController {
 			redirectAttributes.addFlashAttribute("alertClass", "alert-success");
 			return "redirect:/login";
 		}
-		return "redirect:/users/";
+		return "redirect:/users";
 	}
 
-	@GetMapping("/list")
-	public String listarUsuarios(Model model) {
-		List<Usuario> users = userRepository.findAll();
-		model.addAttribute("users", users);
-		return "user/list";
-	}
-
-	@GetMapping("/delete/{id}")
+	@GetMapping("user/delete/{id}")
 	public String excluirUsuario(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
 		redirectAttributes.addFlashAttribute("message", "User removed sucessfully!");
 		userRepository.deleteById(id);
 		redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
-		return "redirect:/user/list";
+		return "redirect:/users";
 	}
 
 }

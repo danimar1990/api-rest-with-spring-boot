@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class apiController {
+public class ContactController {
 
-	@GetMapping(value = "/api")
+	@GetMapping("/contact")
 	public String showForm() {
-		return "api/index";
+		return "contact/index";
 	}
-	
+
 }

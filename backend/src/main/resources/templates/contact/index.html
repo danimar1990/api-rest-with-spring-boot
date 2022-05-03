@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>RentCar - Contact</title>
+		<link th:href="@{/img/favicon.ico}" type="image/x-icon">
+		<link th:href="@{/css/mdb.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/google-fonts.min.css}" rel="stylesheet" />
+	</head>
+	<body>
+		<header th:replace="~{fragments :: header}"></header>
+		<main>
+			<div class="container pt-4">
+				<section class="mb-4">
+					<div class="card">
+						<div class="card-body">
+							<h1 class="mb-5 text-center">How to contact Us</h1>
+							<hr>
+							<p class="lead">Danimar Henrique Varisa</p>
+							<p class="lead">danimarvarisa@gmail.com</p>
+							<p class="lead">(49) 99999-0733</p>
+							<hr>
+							<p class="lead">Michael Timbola</p>
+							<p class="lead">michael@michaeltimbola.com.br</p>
+							<p class="lead">(49) 99991-4873</p>
+						</div>
+						<div class="card-footer text-center py-3">
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+		<footer th:replace="~{fragments :: footer}"></footer>
+	</body>
+	<script type="text/javascript" th:src="@{/js/mdb.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/font-awesome.min.js}"></script>
+</html>

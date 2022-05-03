@@ -13,48 +13,55 @@
 		<main>
 			<div class="container pt-4">
 				<section class="mb-4">
-					<div class="userd">
+					<div class="card">
 						<div class="userd-header text-center py-3">
 							<h1 class="mb-0 text-center">
 								<strong th:text="${insert} ? 'New user' : 'Editing user'"></strong>
 							</h1>
 						</div>
-						<div class="userd-body">
+						<div class="card-body">
 							<form id="form" th:action="${insert} ? @{insert} : @{{id}(id=${user.id})}" th:object="${user}" method="POST">
 								<div class="row mb-4">
 									<div class="col">
-										<span class="badge rounded-pill badge-warning" th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></span>
+										<!-- <span class="badge rounded-pill badge-warning" th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></span> -->
 										<div class="form-outline mb-4">
-											<input type="text" id="brand" th:field="*{brand}" class="form-control form-control-lg" required="required" />
-											<label class="form-label">Brand</label>
+											<input type="text" id="nome" class="form-control form-control-lg" required="required" />
+											<label class="form-label">Firstname</label>
 										</div>
 									</div>
 									<div class="col">
-										<span class="badge rounded-pill badge-warning" th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></span>
+										<!-- <span class="badge rounded-pill badge-warning" th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></span> -->
 										<div class="form-outline mb-4">
-											<input type="text" th:field="*{model}" class="form-control form-control-lg" th:required="required" />
-											<label class="form-label">Model</label>
+											<input type="text" class="form-control form-control-lg" th:required="required" />
+											<label class="form-label">Lastname</label>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col">
+										<!-- <span class="badge rounded-pill badge-warning" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span> -->
+										<div class="form-outline mb-4">
+											<input type="text" class="form-control form-control-lg" th:required="required" />
+											<label class="form-label">Username</label>
 										</div>
 									</div>
 									<div class="col">
-										<span class="badge rounded-pill badge-warning" th:if="${#fields.hasErrors('vyear')}" th:errors="*{vyear}"></span>
+										<!-- <span class="badge rounded-pill badge-warning" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span> -->
 										<div class="form-outline mb-4">
-											<input type="text" th:field="*{vyear}" class="form-control form-control-lg" th:required="required" />
-											<label class="form-label">Year</label>
+											<input type="password" class="form-control form-control-lg" th:required="required" />
+											<label class="form-label">Password</label>
 										</div>
 									</div>
 								</div>
 								<div class="row mb-4">
 									<div class="col">
-										<span class="badge rounded-pill badge-warning" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
-										<div class="form-outline mb-4">
-											<input type="text" th:field="*{price}" class="form-control form-control-lg" th:required="required" />
-											<label class="form-label">Price</label>
-										</div>
-									</div>
-									<div class="col">
-										<div class="form-outline mb-4">
-											<input type="file" th:field="*{photo}" class="form-control form-control-lg" />
+										<!-- <span class="badge rounded-pill badge-warning" th:if="${#fields.hasErrors('vyear')}" th:errors="*{vyear}"></span> -->
+										<label class="form-label">Permission: </label><br>
+										<div class="btn-group">
+											<input type="radio" class="btn-check" name="options" id="ADMIN" autocomplete="off" checked />
+											<label class="btn btn-light" for="ADMIN">Administrator</label>
+											<input type="radio" class="btn-check" name="options" id="USER" autocomplete="off" />
+											<label class="btn btn-light" for="USER">Normal User</label>
 										</div>
 									</div>
 								</div>

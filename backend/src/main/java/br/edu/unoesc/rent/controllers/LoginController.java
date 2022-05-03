@@ -35,13 +35,13 @@ public class LoginController {
 			if (user.getSenha().equals(loginDTO.getSenha())) {
 				acesso = "redirect:/";
 			} else {
-				redirectAttributes.addFlashAttribute("message", "Verifique sua senha e tente novamente!");
+				redirectAttributes.addFlashAttribute("message", "Check your password and try again!");
 				redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
 				redirectAttributes.addFlashAttribute(loginDTO);
 				acesso = "redirect:/login";
 			}
 		} else {
-			redirectAttributes.addFlashAttribute("message", "O usuário informado não existe!");
+			redirectAttributes.addFlashAttribute("message", "The user does not exist!");
 			redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
 			redirectAttributes.addFlashAttribute(loginDTO);
 			acesso = "redirect:/login";

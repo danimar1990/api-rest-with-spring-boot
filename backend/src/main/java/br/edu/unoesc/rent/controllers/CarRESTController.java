@@ -62,7 +62,7 @@ public class CarRESTController {
 			car.setModel(updtCar.getModel());
 			car.setVyear(updtCar.getVyear());
 			car.setPrice(updtCar.getPrice());
-			//car.setPhoto(updtCar.getPhoto());
+			// car.setPhoto(updtCar.getPhoto());
 			return carRepository.save(car);
 		}).orElseGet(() -> {
 			updtCar.setId(id);

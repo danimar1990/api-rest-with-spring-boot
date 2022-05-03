@@ -46,7 +46,7 @@ public class CarController {
 		model.addAttribute("insert", true);
 		return "car/form";
 	}
-	
+
 	@GetMapping("/car/update/{id}")
 	public String update(@PathVariable("id") long id, Model model) {
 		Car car = carRepository.findById(id)
@@ -66,8 +66,7 @@ public class CarController {
 	}
 
 	@PostMapping("/car/update/{id}")
-	public String updateCar(@PathVariable("id") long id, @Valid Car car, BindingResult resultado,
-			Model model) {
+	public String updateCar(@PathVariable("id") long id, @Valid Car car, BindingResult resultado, Model model) {
 		if (resultado.hasErrors()) {
 			car.setId(id);
 			return "form";
